@@ -7,6 +7,8 @@ UI Component For Creating Cron Job Syntax To Send To Server
 Install using bower:
 
 `bower install angular-cron-jobs`
+or bower install https://github.com/bradrust/angular-cron-jobs.git#quartz
+
 
 ##Use:
 
