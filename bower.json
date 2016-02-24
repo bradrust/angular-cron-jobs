@@ -5,7 +5,7 @@
   "description": "UI Component For Creating Cron Job Syntax To Send To Server",
   "repository": {
     "type": "git",
-    "url": "git://github.com/jacobscarter/angular-cron-jobs.git"
+    "url": "git@github.com:bradrust/angular-cron-jobs.git"
   },
   "dependencies": {
     "angular": "*"

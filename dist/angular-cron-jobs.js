@@ -1,6 +1,6 @@
 /**
  * UI Component For Creating Cron Job Syntax To Send To Server
- * @version v1.4.1 - 2015-08-31 * @link https://github.com/jacobscarter/angular-cron-jobs
+ * @version v1.4.1 - 2016-02-24 * @link https://github.com/jacobscarter/angular-cron-jobs
  * @author Jacob Carter <jacob@ieksolutions.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
  */
@@ -229,7 +229,8 @@ angular.module('angular-cron-jobs').factory('cronService', function() {
 
     service.setCron = function(n) {
         //  console.log('set cron called: ', n);
-        var cron = ['*', '*', '*',  '*',  '*'];
+        // QUARTZ default to ? in day
+        var cron = ['*', '*', '?',  '*',  '*'];
 
         if(n && n.base && n.base >= 2) {
             cron[0] = typeof n.minuteValue !== undefined ? n.minuteValue : '*';
@@ -244,17 +245,21 @@ angular.module('angular-cron-jobs').factory('cronService', function() {
         }
 
         if(n && n.base && n.base >= 5) {
+            // QUARTZ
             cron[2] = typeof n.dayOfMonthValue !== undefined ? n.dayOfMonthValue : '*';
+            // QUARTZ
+            cron[4] = '?';
         }
 
         if(n && n.base && n.base === 6) {
             cron[3] = typeof n.monthValue !== undefined ? n.monthValue : '*';
         }
         //  console.log('cron after setCron ', cron.join(' '));
-        return cron.join(' ');
+        // QUARTZ seconds
+        return "0 " + cron.join(' ');
     };
 
-    service.fromCron = function(value) { 
+    service.fromCron = function(value) {
         //  console.log('set cron fired!');
        var cron = value.replace(/\s+/g, ' ').split(' ');
        var frequency = {base: '1'}; // default: every minute
@@ -296,6 +301,6 @@ angular.module('angular-cron-jobs').factory('cronService', function() {
        // console.log('freq ', frequency);
        return frequency;
    };
-   
+
    return service;
 });
