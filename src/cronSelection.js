@@ -25,30 +25,30 @@ angular.module('angular-cron-jobs').directive('cronSelection', ['cronService', f
             $scope.frequency = [
                 {
                   value : 1,
-                  label : 'Minute'  
+                  label : 'Minute'
                 },
                 {
                   value : 2,
-                  label : 'Hour'  
+                  label : 'Hour'
                 },
                 {
                   value : 3,
-                  label : 'Day'  
+                  label : 'Day'
                 },
                 {
                   value : 4,
-                  label : 'Week'  
+                  label : 'Week'
                 },
                 {
                   value : 5,
-                  label : 'Month'  
+                  label : 'Month'
                 },
                 {
                   value : 6,
-                  label : 'Year'  
+                  label : 'Year'
                 }
             ];
-            
+
 
 
 
@@ -84,7 +84,7 @@ angular.module('angular-cron-jobs').directive('cronSelection', ['cronService', f
             $scope.minuteValue = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55];
             $scope.hourValue = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
             $scope.dayOfMonthValue = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
-            $scope.dayValue = [0, 1, 2, 3, 4, 5, 6];
+            $scope.dayValue = [1, 2, 3, 4, 5, 6, 7];
             $scope.monthValue = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
             $scope.$watch('myFrequency', function(n, o){
@@ -119,7 +119,7 @@ angular.module('angular-cron-jobs').directive('cronSelection', ['cronService', f
                 $scope.output = cronService.setCron(n);
             }, true);
 
-        
+
         }
     };
 }]).filter('numeral', function() {
@@ -171,7 +171,7 @@ angular.module('angular-cron-jobs').directive('cronSelection', ['cronService', f
 }).filter('dayName', function() {
     return function(input) {
         var days = {
-            0: 'Sunday',
+            7: 'Sunday',
             1: 'Monday',
             2: 'Tuesday',
             3: 'Wednesday',
